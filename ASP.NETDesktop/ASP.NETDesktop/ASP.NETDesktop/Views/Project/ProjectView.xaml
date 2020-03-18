@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ASP.NETDesktop.Views.ProjectView" Title="Project details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back"
+                     Order="Primary"
+                     Priority="0"
+                     Command="{Binding BackCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Label Grid.Column="0" Text="Name: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.Name}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Description: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.Description}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Client: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.Client}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Company: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.Company}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Source: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.Source}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Contact: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.Contact}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Status: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.Status}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Start date: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.StartDate, StringFormat='{0:dd/MM/yyyy}'}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="End date: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.EndDate, StringFormat='{0:dd/MM/yyyy}'}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Git url: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Project.GitUrl}" />
+            </Grid>
+
+            <Button x:Name="Developers" Text="Developers" Command="{Binding GetDevelopersCommand}"/>
+
+            <Button x:Name="Update" Text="Update" Command="{Binding UpdateCommand}"/>
+            <Button x:Name="Delete" Text="Delete" Command="{Binding DeleteCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

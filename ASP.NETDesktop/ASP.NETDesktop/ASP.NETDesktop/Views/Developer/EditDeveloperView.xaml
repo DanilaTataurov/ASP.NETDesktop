@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ASP.NETDesktop.Views.EditDeveloperView" Title="Edit developer">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back"
+                     Order="Primary"
+                     Priority="0"
+                     Command="{Binding BackCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="FirstName" Text="{Binding Developer.FirstName}" Placeholder="First name" FontSize="Medium" />
+            <Entry x:Name="LastName" Text="{Binding Developer.LastName}" Placeholder="Last name" FontSize="Medium" />
+            <Entry x:Name="Grade" Text="{Binding Developer.Grade}" Placeholder="Grade" FontSize="Medium" />
+            <Entry x:Name="Location" Text="{Binding Developer.Location}" Placeholder="Location" FontSize="Medium" />
+            <Entry x:Name="Room" Text="{Binding Developer.Room}" Placeholder="Room" FontSize="Medium" />
+            <Entry x:Name="Skype" Text="{Binding Developer.Skype}" Placeholder="Skype" FontSize="Medium" />
+            <Entry x:Name="Email" Text="{Binding Developer.Email}" Placeholder="Email" FontSize="Medium" />
+            <Entry x:Name="HomePhone" Text="{Binding Developer.HomePhone}" Placeholder="Home phone" FontSize="Medium" />
+            <Entry x:Name="CellPhone" Text="{Binding Developer.CellPhone}" Placeholder="Cell phone" FontSize="Medium" />
+            <Entry x:Name="Schedule" Text="{Binding Developer.Schedule}" Placeholder="Schedule" FontSize="Medium" />
+
+            <Button x:Name="Save" Text="Save" Command="{Binding EditCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

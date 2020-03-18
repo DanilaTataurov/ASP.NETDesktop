@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ASP.NETDesktop.Views.DeveloperView" Title="Developer details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back"
+                     Order="Primary"
+                     Priority="0"
+                     Command="{Binding BackCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Label Grid.Column="0" Text="First name: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.FirstName}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Last name: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.LastName}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Grade: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.Grade}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Location: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.Location}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Room: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.Room}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Skype: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.Skype}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Email: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.Email}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Home phone: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.HomePhone}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Cell phone: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.CellPhone}" />
+            </Grid>
+            <Grid>
+                <Label Grid.Column="0" Text="Schedule: " HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Developer.Schedule}" />
+            </Grid>
+
+            <Button x:Name="Vacations" Text="Vacations" Command="{Binding GetVacationsCommand}"/>
+            <Button x:Name="Projects" Text="Projects" Command="{Binding GetProjectsCommand}"/>
+
+            <Button x:Name="Update" Text="Update" Command="{Binding UpdateCommand}"/>
+            <Button x:Name="Delete" Text="Delete" Command="{Binding DeleteCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

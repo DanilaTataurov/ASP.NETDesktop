@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ASP.NETDesktop.Views.LoginView" Title="ASP.NET/Desktop">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="emailEntry" Text="{Binding Username}" Placeholder="Email" FontSize="Medium" />
+            <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" IsPassword="True" FontSize="Medium" />
+            <Button x:Name="login" Text="Sign in" Command="{Binding LoginCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

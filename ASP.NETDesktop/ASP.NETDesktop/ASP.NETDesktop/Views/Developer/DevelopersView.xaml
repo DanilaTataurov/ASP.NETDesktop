@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ASP.NETDesktop.Views.DevelopersView" Title="Developers">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back"
+                     Order="Primary"
+                     Priority="0"
+                     Command="{Binding BackCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button x:Name="AddDeveloper" Text="Add new" Grid.Row="1" Command="{Binding AddCommand}" />
+                <ListView x:Name="ProjectListView"
+                          ItemsSource="{Binding Developers}"
+                          HasUnevenRows="True"
+                          SelectedItem="{Binding SelectedDeveloper}"
+                          CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell
+                                Text="{Binding FirstName}"
+                                Detail="{Binding LastName}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

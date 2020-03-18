@@ -1,0 +1,149 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.BLL\\ASP.NETDesktop.BLL.csproj": {}
+  },
+  "projects": {
+    "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.BLL\\ASP.NETDesktop.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.BLL\\ASP.NETDesktop.BLL.csproj",
+        "projectName": "ASP.NETDesktop.BLL",
+        "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.BLL\\ASP.NETDesktop.BLL.csproj",
+        "packagesPath": "C:\\Users\\Tataurovd\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tataurovd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Common\\ASP.NETDesktop.Common.csproj": {
+                "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Common\\ASP.NETDesktop.Common.csproj"
+              },
+              "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.DAL\\ASP.NETDesktop.DAL.csproj": {
+                "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.DAL\\ASP.NETDesktop.DAL.csproj"
+              },
+              "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Domain\\ASP.NETDesktop.Domain.csproj": {
+                "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Domain\\ASP.NETDesktop.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Autofac": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "Microsoft.AspNet.Identity.Core": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Common\\ASP.NETDesktop.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Common\\ASP.NETDesktop.Common.csproj",
+        "projectName": "ASP.NETDesktop.Common",
+        "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Common\\ASP.NETDesktop.Common.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.DAL\\ASP.NETDesktop.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.DAL\\ASP.NETDesktop.DAL.csproj",
+        "projectName": "ASP.NETDesktop.DAL",
+        "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.DAL\\ASP.NETDesktop.DAL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Domain\\ASP.NETDesktop.Domain.csproj": {
+                "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Domain\\ASP.NETDesktop.Domain.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Domain\\ASP.NETDesktop.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Domain\\ASP.NETDesktop.Domain.csproj",
+        "projectName": "ASP.NETDesktop.Domain",
+        "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Domain\\ASP.NETDesktop.Domain.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Common\\ASP.NETDesktop.Common.csproj": {
+                "projectPath": "D:\\Git\\ASP.NETDesktop\\ASP.NETDesktop\\ASP.NETDesktop.Common\\ASP.NETDesktop.Common.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}
