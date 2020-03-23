@@ -4,50 +4,41 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using ASP.NETDesktop.BLL.Services.Base;
-using ASP.NETDesktop.Common.Dtos;
 using ASP.NETDesktop.Domain.Entities;
 using ASP.NETDesktop.Domain.Interfaces;
 using ASP.NETDesktop.Domain.Interfaces.Services;
+using ASP.NETDesktop.Domain.Models.Dtos;
 using AutoMapper;
 
 namespace ASP.NETDesktop.BLL.Services {
     public class DeveloperService : BaseService<Developer>, IDeveloperService {
         public DeveloperService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper) { }
 
-        public IEnumerable<Developer> List() {
-            return _unitOfWork.GetRepository<Developer>().All()
+        public IEnumerable<DeveloperDto> List() {
+            List<Developer> developers = _unitOfWork.GetRepository<Developer>().All()
                 .Include(v => v.Vacations)
                 .Include(p => p.Projects)
                 .OrderBy(x => x.FirstName)
                 .ThenBy(x=>x.LastName)
                 .ToList(); ;
+            return _mapper.Map<IEnumerable<DeveloperDto>>(developers);
         }
 
-        public async Task<Developer> GetByIdAsync(Guid id) {
-            return await _unitOfWork.GetRepository<Developer>().FindByIdAsync(id);
+        public async Task<DeveloperDto> GetByIdAsync(Guid id) {
+            Developer entity = await _unitOfWork.GetRepository<Developer>().FindByIdAsync(id);
+            return _mapper.Map<DeveloperDto>(entity);
         }
 
         public void Create(DeveloperDto dto) {
-            //TODO: add mapper
-            Developer entity = new Developer() {
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Grade = dto.Grade,
-                Location = dto.Location,
-                Room = dto.Room,
-                Skype = dto.Skype,
-                Email = dto.Email,
-                HomePhone = dto.HomePhone,
-                CellPhone = dto.CellPhone,
-                Schedule = dto.Schedule
-            };
+            Developer entity = new Developer();
+            entity = _mapper.Map<Developer>(dto);
+
             _unitOfWork.GetRepository<Developer>().Add(entity);
             _unitOfWork.Commit();
         }
 
         public async Task UpdateAsync(DeveloperDto dto) {
-            //TODO: add mapper
-            Developer entity = await GetByIdAsync(dto.Id);
+            Developer entity = GetById(dto.Id);
             entity.FirstName = dto.FirstName;
             entity.LastName = dto.LastName;
             entity.Grade = dto.Grade;
@@ -65,7 +56,7 @@ namespace ASP.NETDesktop.BLL.Services {
 
         public async Task<bool> DeleteAsync(Guid id) {
             try {
-                Developer entity = await GetByIdAsync(id);
+                Developer entity = GetById(id);
                 if (entity == null) {
                     return false;
                 }
@@ -80,7 +71,7 @@ namespace ASP.NETDesktop.BLL.Services {
 
         //DeveloperProjects
         public async Task AddProjectAsync(Guid developerId, Guid projectId) {
-            Developer developer = await GetByIdAsync(developerId);
+            Developer developer = GetById(developerId);
             Project project = await _unitOfWork.GetRepository<Project>().FindByIdAsync(projectId);
 
             var projects = developer.Projects;
@@ -90,7 +81,7 @@ namespace ASP.NETDesktop.BLL.Services {
         }
 
         public async Task DeleteProjectAsync(Guid developerId, Guid projectId) {
-            Developer developer = await GetByIdAsync(developerId);
+            Developer developer = GetById(developerId);
             Project project = await _unitOfWork.GetRepository<Project>().FindByIdAsync(projectId);
 
             var projects = developer.Projects;

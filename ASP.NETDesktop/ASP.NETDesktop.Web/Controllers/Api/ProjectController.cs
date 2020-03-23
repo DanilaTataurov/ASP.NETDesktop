@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using ASP.NETDesktop.Common.ApiModels;
-using ASP.NETDesktop.Common.Dtos;
 using ASP.NETDesktop.Domain.Interfaces.Services;
+using ASP.NETDesktop.Domain.Models.Dtos;
 using AutoMapper;
 using Newtonsoft.Json;
 

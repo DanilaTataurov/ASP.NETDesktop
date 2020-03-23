@@ -17,7 +17,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult<List<ProjectApiModel>>> ListAsync() {
-            var response = await _apiService.DoRequestAsync("GET", UrlHelper.baseUrl + UrlHelper.ProjectList, new { });
+            var response = await _apiService.DoRequestAsync("GET", UrlHelper.ProjectList, new { });
 
             if (response.IsSuccess) {
                 var jsonResult = JsonConvert.DeserializeObject(response.Message).ToString();
@@ -30,7 +30,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult<ProjectApiModel>> GetByIdAsync(Guid id) {
-            var response = await _apiService.DoRequestAsync("GET", UrlHelper.baseUrl + UrlHelper.GetProject, new { id = id });
+            var response = await _apiService.DoRequestAsync("GET", UrlHelper.GetProject, new { id = id });
 
             if (response.IsSuccess) {
                 var jsonResult = JsonConvert.DeserializeObject(response.Message).ToString();
@@ -42,7 +42,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult> CreateAsync(ProjectApiModel model) {
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.CreateProject, model);
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.CreateProject, model);
             if (response.IsSuccess) {
                 return ServiceResult.Ok();
             } else {
@@ -51,7 +51,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult> UpdateAsync(ProjectApiModel model) {
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.UpdateProject, model);
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.UpdateProject, model);
             if (response.IsSuccess) {
                 return ServiceResult.Ok();
             } else {
@@ -60,7 +60,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult> DeleteAsync(Guid id) {
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.DeleteProject, new { id = id });
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.DeleteProject, new { id = id });
             if (response.IsSuccess) {
                 return ServiceResult.Ok();
             } else {

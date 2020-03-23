@@ -44,15 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiModels\Account\FailResult.cs" />
     <Compile Include="ApiModels\Account\TokenResult.cs" />
     <Compile Include="ApiModels\Base\BaseApiModel.cs" />
     <Compile Include="ApiModels\DeveloperApiModel.cs" />
     <Compile Include="ApiModels\ProjectApiModel.cs" />
     <Compile Include="ApiModels\VacationApiModel.cs" />
-    <Compile Include="Dtos\Base\BaseDto.cs" />
-    <Compile Include="Dtos\DeveloperDto.cs" />
-    <Compile Include="Dtos\ProjectDto.cs" />
-    <Compile Include="Dtos\VacationDto.cs" />
     <Compile Include="Enums\VacationStatus.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Helpers\DateHelper.cs" />

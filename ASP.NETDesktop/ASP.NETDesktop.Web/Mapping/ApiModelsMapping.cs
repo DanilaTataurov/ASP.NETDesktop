@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using ASP.NETDesktop.Common.ApiModels;
-using ASP.NETDesktop.Common.Dtos;
 using ASP.NETDesktop.Domain.Entities;
+using ASP.NETDesktop.Domain.Models.Dtos;
 using AutoMapper;
 
 namespace ASP.NETDesktop.Web.Mapping {

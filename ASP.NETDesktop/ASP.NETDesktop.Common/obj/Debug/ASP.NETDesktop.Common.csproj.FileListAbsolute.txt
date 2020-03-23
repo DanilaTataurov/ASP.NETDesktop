@@ -1,8 +1,0 @@
-D:\Git\ASP.NETDesktop\ASP.NETDesktop\ASP.NETDesktop.Common\bin\Debug\ASP.NETDesktop.Common.dll
-D:\Git\ASP.NETDesktop\ASP.NETDesktop\ASP.NETDesktop.Common\bin\Debug\ASP.NETDesktop.Common.pdb
-D:\Git\ASP.NETDesktop\ASP.NETDesktop\ASP.NETDesktop.Common\bin\Debug\Newtonsoft.Json.dll
-D:\Git\ASP.NETDesktop\ASP.NETDesktop\ASP.NETDesktop.Common\bin\Debug\Newtonsoft.Json.xml
-D:\Git\ASP.NETDesktop\ASP.NETDesktop\ASP.NETDesktop.Common\obj\Debug\ASP.NETDesktop.Common.csprojAssemblyReference.cache
-D:\Git\ASP.NETDesktop\ASP.NETDesktop\ASP.NETDesktop.Common\obj\Debug\ASP.NETDesktop.Common.csproj.CopyComplete
-D:\Git\ASP.NETDesktop\ASP.NETDesktop\ASP.NETDesktop.Common\obj\Debug\ASP.NETDesktop.Common.dll
-D:\Git\ASP.NETDesktop\ASP.NETDesktop\ASP.NETDesktop.Common\obj\Debug\ASP.NETDesktop.Common.pdb

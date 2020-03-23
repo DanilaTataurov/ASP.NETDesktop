@@ -4,48 +4,39 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using ASP.NETDesktop.BLL.Services.Base;
-using ASP.NETDesktop.Common.Dtos;
 using ASP.NETDesktop.Domain.Entities;
 using ASP.NETDesktop.Domain.Interfaces;
 using ASP.NETDesktop.Domain.Interfaces.Services;
+using ASP.NETDesktop.Domain.Models.Dtos;
 using AutoMapper;
 
 namespace ASP.NETDesktop.BLL.Services {
     public class ProjectService : BaseService<Project>, IProjectService {
         public ProjectService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper) { }
 
-        public IEnumerable<Project> List() {
-            return _unitOfWork.GetRepository<Project>().All()
+        public IEnumerable<ProjectDto> List() {
+            List<Project> projects = _unitOfWork.GetRepository<Project>().All()
                 .Include(d => d.Developers)
                 .OrderBy(x => x.Name)
                 .ToList();
+            return _mapper.Map<IEnumerable<ProjectDto>>(projects);
         }
 
-        public async Task<Project> GetByIdAsync(Guid id) {
-            return await _unitOfWork.GetRepository<Project>().FindByIdAsync(id);
+        public async Task<ProjectDto> GetByIdAsync(Guid id) {
+            Project entity = await _unitOfWork.GetRepository<Project>().FindByIdAsync(id);
+            return _mapper.Map<ProjectDto>(entity);
         }
 
         public void Create(ProjectDto dto) {
-            //TODO: add mapper
-            Project entity = new Project() {
-                Client = dto.Client,
-                Company = dto.Company,
-                Contact = dto.Contact,
-                Description = dto.Description,
-                Name = dto.Name,
-                Source = dto.Source,
-                Status = dto.Status,
-                StartDate = dto.StartDate,
-                EndDate = dto.EndDate,
-                GitUrl = dto.GitUrl
-            };
+            Project entity = new Project();
+            entity = _mapper.Map<Project>(dto);
+
             _unitOfWork.GetRepository<Project>().Add(entity);
             _unitOfWork.Commit();
         }
 
         public async Task UpdateAsync(ProjectDto dto) {
-            //TODO: add mapper
-            Project entity = await GetByIdAsync(dto.Id);
+            Project entity = GetById(dto.Id);
             entity.Client = dto.Client;
             entity.Company = dto.Company;
             entity.Contact = dto.Contact;
@@ -63,7 +54,7 @@ namespace ASP.NETDesktop.BLL.Services {
 
         public async Task<bool> DeleteAsync(Guid id) {
             try {
-                Project entity = await GetByIdAsync(id);
+                Project entity = GetById(id);
                 if (entity == null) {
                     return false;
                 }

@@ -5,30 +5,30 @@ namespace ASP.NETDesktop.Helpers {
         //public static string baseUrl = "http://192.168.1.135/";
         public static string baseUrl = "http://192.168.0.109/";
 
-        public static string Token = "Token";
-        public static string Logout = "api/Auth/Logout";
+        public static string Token = baseUrl + "Token";
+        public static string Logout = baseUrl + "api/Auth/Logout";
 
-        public static string ProjectList = "api/Project/List";
-        public static string GetProject = "api/Project/Get";
-        public static string CreateProject = "api/Project/Create";
-        public static string UpdateProject = "api/Project/Update";
-        public static string DeleteProject = "api/Project/Delete";
+        public static string ProjectList = baseUrl + "api/Project/List";
+        public static string GetProject = baseUrl + "api/Project/Get";
+        public static string CreateProject = baseUrl + "api/Project/Create";
+        public static string UpdateProject = baseUrl + "api/Project/Update";
+        public static string DeleteProject = baseUrl + "api/Project/Delete";
 
-        public static string DeveloperList = "api/Developer/List";
-        public static string GetDeveloper = "api/Developer/Get";
-        public static string CreateDeveloper = "api/Developer/Create";
-        public static string UpdateDeveloper = "api/Developer/Update";
-        public static string DeleteDeveloper = "api/Developer/Delete";
+        public static string DeveloperList = baseUrl + "api/Developer/List";
+        public static string GetDeveloper = baseUrl + "api/Developer/Get";
+        public static string CreateDeveloper = baseUrl + "api/Developer/Create";
+        public static string UpdateDeveloper = baseUrl + "api/Developer/Update";
+        public static string DeleteDeveloper = baseUrl + "api/Developer/Delete";
 
-        public static string VacationList = "api/Vacation/List";
-        public static string DeveloperVacations = "api/Vacation/ListByDeveloperId";
-        public static string GetVacation = "api/Vacation/Get";
-        public static string CreateVacation = "api/Vacation/Create";
-        public static string UpdateVacation = "api/Vacation/Update";
-        public static string DeleteVacation = "api/Vacation/Delete";
+        public static string VacationList = baseUrl + "api/Vacation/List";
+        public static string DeveloperVacations = baseUrl + "api/Vacation/ListByDeveloperId";
+        public static string GetVacation = baseUrl + "api/Vacation/Get";
+        public static string CreateVacation = baseUrl + "api/Vacation/Create";
+        public static string UpdateVacation = baseUrl + "api/Vacation/Update";
+        public static string DeleteVacation = baseUrl + "api/Vacation/Delete";
 
-        public static string AddDeveloperProject = "api/Developer/AddProject";
-        public static string DeleteDeveloperProject = "api/Developer/DeleteProject";
+        public static string AddDeveloperProject = baseUrl + "api/Developer/AddProject";
+        public static string DeleteDeveloperProject = baseUrl + "api/Developer/DeleteProject";
 
         public static string UrlEncode(string str) {
             if (str != null) {

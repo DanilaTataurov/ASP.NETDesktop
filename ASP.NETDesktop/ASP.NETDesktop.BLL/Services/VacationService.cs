@@ -4,49 +4,48 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using ASP.NETDesktop.BLL.Services.Base;
-using ASP.NETDesktop.Common.Dtos;
 using ASP.NETDesktop.Common.Helpers;
 using ASP.NETDesktop.Domain.Entities;
 using ASP.NETDesktop.Domain.Interfaces;
 using ASP.NETDesktop.Domain.Interfaces.Services;
+using ASP.NETDesktop.Domain.Models.Dtos;
 using AutoMapper;
 
 namespace ASP.NETDesktop.BLL.Services {
     public class VacationService : BaseService<Vacation>, IVacationService {
         public VacationService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper) { }
 
-        public IEnumerable<Vacation> List() {
-            return _unitOfWork.GetRepository<Vacation>().All()
+        public IEnumerable<VacationDto> List() {
+            List<Vacation> vacations = _unitOfWork.GetRepository<Vacation>().All()
                 .Include(d=>d.Developer)
                 .OrderBy(x=>x.StartDate)
                 .ThenBy(x=>x.EndDate)
                 .ToList();
+            return _mapper.Map<IEnumerable<VacationDto>>(vacations);
         }
 
-        public IEnumerable<Vacation> ListByDeveloperId(Guid id) {
-            return _unitOfWork.GetRepository<Vacation>().All()
+        public IEnumerable<VacationDto> ListByDeveloperId(Guid id) {
+            List<Vacation> vacations = _unitOfWork.GetRepository<Vacation>().All()
                 .Include(d => d.Developer)
                 .OrderBy(x => x.StartDate)
                 .ThenBy(x=>x.EndDate)
                 .Where(x => x.DeveloperId == id)
                 .ToList();
+            return _mapper.Map<IEnumerable<VacationDto>>(vacations);
         }
 
-        public async Task<Vacation> GetByIdAsync(Guid id) {
-            return await _unitOfWork.GetRepository<Vacation>().FindByIdAsync(id);
+        public async Task<VacationDto> GetByIdAsync(Guid id) {
+            Vacation entity = await _unitOfWork.GetRepository<Vacation>().FindByIdAsync(id);
+            return _mapper.Map<VacationDto>(entity);
         }
 
         public string Create(VacationDto dto) {
             string message = CheckDates(dto);
 
             if (string.IsNullOrWhiteSpace(message)) {
-                Vacation entity = new Vacation() {
-                    StartDate = dto.StartDate,
-                    EndDate = dto.EndDate,
-                    Comment = dto.Comment,
-                    Status = dto.Status,
-                    DeveloperId = dto.DeveloperId
-                };
+                Vacation entity = new Vacation();
+                entity = _mapper.Map<Vacation>(dto);
+
                 _unitOfWork.GetRepository<Vacation>().Add(entity);
                 _unitOfWork.Commit();
                 return message = "Vacation successfully added.";
@@ -58,7 +57,7 @@ namespace ASP.NETDesktop.BLL.Services {
             string message = CheckDates(dto);
 
             if (string.IsNullOrWhiteSpace(message)) { 
-                Vacation entity = await GetByIdAsync(dto.Id);
+                Vacation entity = GetById(dto.Id);
 
                 entity.StartDate = dto.StartDate;
                 entity.EndDate = dto.EndDate;
@@ -74,7 +73,7 @@ namespace ASP.NETDesktop.BLL.Services {
 
         public async Task<bool> DeleteAsync(Guid id) {
             try {
-                Vacation entity = await GetByIdAsync(id);
+                Vacation entity = GetById(id);
                 if (entity == null) {
                     return false;
                 }
@@ -90,7 +89,7 @@ namespace ASP.NETDesktop.BLL.Services {
 
         //Date comparison
         public bool DeveloperVacationMatches(VacationDto dto, Guid vacationId) {
-            IEnumerable<Vacation> vacations = new List<Vacation>();
+            IEnumerable<VacationDto> vacations = new List<VacationDto>();
 
             if (vacationId != Guid.Empty) {
                 vacations = List().Where(x => x.Id != vacationId);
@@ -98,8 +97,8 @@ namespace ASP.NETDesktop.BLL.Services {
                 vacations = List();
             }
 
-            IEnumerable<Vacation> developerVacations = ListByDeveloperId(dto.DeveloperId);
-            foreach (Vacation vacation in vacations) {
+            IEnumerable<VacationDto> developerVacations = ListByDeveloperId(dto.DeveloperId);
+            foreach (VacationDto vacation in vacations) {
                 if (DateHelper.DatesIntersect(dto.StartDate, dto.EndDate, vacation.StartDate, vacation.EndDate)) { 
                     if (dto.DeveloperId == vacation.DeveloperId) {
                         return true;
@@ -112,7 +111,7 @@ namespace ASP.NETDesktop.BLL.Services {
         public bool ProjectsVacationMatches(VacationDto dto, Guid vacationId) {
             var currentDeveloper = _unitOfWork.GetRepository<Developer>().Where(x => x.Id == dto.DeveloperId).FirstOrDefault();
 
-            IEnumerable<Vacation> vacations = new List<Vacation>();
+            IEnumerable<VacationDto> vacations = new List<VacationDto>();
             if (vacationId != Guid.Empty) {
                 vacations = List().Where(x => x.Id != vacationId && x.DeveloperId != dto.DeveloperId);
             }
@@ -135,7 +134,7 @@ namespace ASP.NETDesktop.BLL.Services {
         public bool MatchesWithTwoVacations(VacationDto dto, Guid vacationId) {
             int matchCount = 0;
 
-            IEnumerable<Vacation> vacations = new List<Vacation>();
+            IEnumerable<VacationDto> vacations = new List<VacationDto>();
             if (vacationId != Guid.Empty) {
                 vacations = List().Where(x => x.Id != vacationId);
             }
@@ -143,8 +142,8 @@ namespace ASP.NETDesktop.BLL.Services {
                 vacations = List();
             }
             
-            IEnumerable<Vacation> developerVacations = ListByDeveloperId(dto.DeveloperId);
-            foreach (Vacation vacation in vacations) {
+            IEnumerable<VacationDto> developerVacations = ListByDeveloperId(dto.DeveloperId);
+            foreach (VacationDto vacation in vacations) {
                 if (DateHelper.DatesIntersect(dto.StartDate, dto.EndDate, vacation.StartDate, vacation.EndDate)) {
                     matchCount++;
                 }
@@ -184,7 +183,7 @@ namespace ASP.NETDesktop.BLL.Services {
 
             else {
                 int oldDays = 0;
-                IEnumerable<Vacation> developerVacations = ListByDeveloperId(dto.DeveloperId).Where(x => x.Id != dto.Id);
+                IEnumerable<VacationDto> developerVacations = ListByDeveloperId(dto.DeveloperId).Where(x => x.Id != dto.Id);
  
                 foreach (var vacation in developerVacations) {
                     oldDays += DateHelper.GetWorkingDays(vacation.StartDate, vacation.EndDate);

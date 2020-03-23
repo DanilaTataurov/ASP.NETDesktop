@@ -59,11 +59,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Base\BaseEntity.cs" />
-    <Compile Include="Entities\Base\IEntity.cs" />
-    <Compile Include="Entities\Developer.cs" />
-    <Compile Include="Entities\Project.cs" />
-    <Compile Include="Entities\Vacation.cs" />
+    <Compile Include="Models\Dtos\Base\BaseDto.cs" />
+    <Compile Include="Models\Dtos\DeveloperDto.cs" />
+    <Compile Include="Models\Dtos\ProjectDto.cs" />
+    <Compile Include="Models\Dtos\VacationDto.cs" />
+    <Compile Include="Models\Entities\Base\BaseEntity.cs" />
+    <Compile Include="Models\Entities\Base\IEntity.cs" />
+    <Compile Include="Models\Entities\Developer.cs" />
+    <Compile Include="Models\Entities\Project.cs" />
+    <Compile Include="Models\Entities\Vacation.cs" />
     <Compile Include="Identity\Role.cs" />
     <Compile Include="Identity\User.cs" />
     <Compile Include="Identity\UserClaim.cs" />
@@ -87,5 +91,6 @@
       <Name>ASP.NETDesktop.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

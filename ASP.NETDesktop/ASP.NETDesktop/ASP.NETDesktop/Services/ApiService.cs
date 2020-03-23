@@ -52,14 +52,16 @@ namespace ASP.NETDesktop.Services {
                     new KeyValuePair<string, string>("password", password)
                 });
 
-                HttpResponseMessage response = await client.PostAsync(UrlHelper.baseUrl + UrlHelper.Token, content);
+                HttpResponseMessage response = await client.PostAsync(UrlHelper.Token, content);
                 var responseString = await response.Content.ReadAsStringAsync();
+
+                var failResult = JsonConvert.DeserializeObject<FailResult>(responseString);
                 var tokenResult = JsonConvert.DeserializeObject<TokenResult>(responseString);
 
                 if (tokenResult.AccessToken != null) {
                     return ApiResponse.Ok(tokenResult.AccessToken);
                 } else {
-                    return ApiResponse.Fail(response.ToString());
+                    return ApiResponse.Fail(failResult.ErrorDescription);
                 }
             } catch (Exception ex) {
                 return ApiResponse.Fail(ex.Message);

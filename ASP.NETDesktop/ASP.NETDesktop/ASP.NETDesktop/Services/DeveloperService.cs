@@ -17,7 +17,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult<List<DeveloperApiModel>>> ListAsync() {
-            var response = await _apiService.DoRequestAsync("GET", UrlHelper.baseUrl + UrlHelper.DeveloperList, new {});
+            var response = await _apiService.DoRequestAsync("GET", UrlHelper.DeveloperList, new {});
 
             if (response.IsSuccess) {
                 var jsonResult = JsonConvert.DeserializeObject(response.Message).ToString();
@@ -30,7 +30,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult<DeveloperApiModel>> GetByIdAsync(Guid id) {
-            var response = await _apiService.DoRequestAsync("GET", UrlHelper.baseUrl + UrlHelper.GetDeveloper, new { id = id });
+            var response = await _apiService.DoRequestAsync("GET", UrlHelper.GetDeveloper, new { id = id });
 
             if (response.IsSuccess) {
                 var jsonResult = JsonConvert.DeserializeObject(response.Message).ToString();
@@ -42,7 +42,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult> CreateAsync(DeveloperApiModel model) {
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.CreateDeveloper, model);
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.CreateDeveloper, model);
             if (response.IsSuccess) {
                 return ServiceResult.Ok();
             } else {
@@ -51,7 +51,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult> UpdateAsync(DeveloperApiModel model) {
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.UpdateDeveloper, model);
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.UpdateDeveloper, model);
             if (response.IsSuccess) {
                 return ServiceResult.Ok();
             } else {
@@ -60,7 +60,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult> DeleteAsync(Guid id) {
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.DeleteDeveloper, new { id = id });
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.DeleteDeveloper, new { id = id });
             if (response.IsSuccess) {
                 return ServiceResult.Ok();
             } else {
@@ -69,7 +69,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult> AddProjectAsync(Guid developerId, Guid projectId) {
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.AddDeveloperProject, new {
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.AddDeveloperProject, new {
                 developerId = developerId, projectId = projectId
             });
             if (response.IsSuccess) {
@@ -80,7 +80,7 @@ namespace ASP.NETDesktop.Services {
         }
 
         public async Task<ServiceResult> DeleteProjectAsync(Guid developerId, Guid projectId) {
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.DeleteDeveloperProject, new {
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.DeleteDeveloperProject, new {
                 developerId = developerId, projectId = projectId
             });
             if (response.IsSuccess) {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ASP.NETDesktop.Common.ApiModels.Base;
 
 namespace ASP.NETDesktop.Common.ApiModels {

@@ -27,7 +27,7 @@ namespace ASP.NETDesktop.Services {
             Application.Current.Properties.Remove("token");
             await Application.Current.SavePropertiesAsync();
 
-            var response = await _apiService.DoRequestAsync("POST", UrlHelper.baseUrl + UrlHelper.Logout, new { });
+            var response = await _apiService.DoRequestAsync("POST", UrlHelper.Logout, new { });
             if (response.IsSuccess) {
                 return ServiceResult.Ok();
             }
