@@ -35,8 +35,7 @@ namespace ASP.NETDesktop.ViewModels {
 
         private async Task<DeveloperModel> GetAsync(Guid id) {
             var result = await _developerService.GetByIdAsync(id);
-            DeveloperApiModel model = result.Data;
-            DeveloperModel developer = _mapper.Map<DeveloperModel>(model);
+            DeveloperModel developer = _mapper.Map<DeveloperModel>(result.Data);
             return developer;
         }
 
@@ -60,8 +59,7 @@ namespace ASP.NETDesktop.ViewModels {
         }
 
         public void OnNavigatedTo(INavigationParameters parameters) {
-            string id = parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString();
-            Id = Guid.Parse(id);
+            Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
 
             var developer = Task.Run(() => GetAsync(Id));
             Developer = developer.Result;

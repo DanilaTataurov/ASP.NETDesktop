@@ -19,7 +19,9 @@ namespace ASP.NETDesktop {
         }
 
         protected override async void OnInitialized() {
-            if (Application.Current.Properties.ContainsKey("token")) {
+            Application.Current.Properties.TryGetValue("token", out object token);
+
+            if (Application.Current.Properties.ContainsKey("token") && token != null) {
                 await NavigationService.NavigateAsync("/NavigationPage/MainView");
             } else {
                 await NavigationService.NavigateAsync("/NavigationPage/LoginView");
@@ -55,6 +57,7 @@ namespace ASP.NETDesktop {
 
             containerRegistry.RegisterForNavigation<AddVacationView, AddVacationViewModel>();
             containerRegistry.RegisterForNavigation<EditVacationView, EditVacationViewModel>();
+            containerRegistry.RegisterForNavigation<VacationChartView, VacationChartViewModel>();
             containerRegistry.RegisterForNavigation<VacationsView, VacationsViewModel>();
             containerRegistry.RegisterForNavigation<VacationView, VacationViewModel>();
         }

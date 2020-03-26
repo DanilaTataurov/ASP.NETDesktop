@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using ASP.NETDesktop.Common.ApiModels;
 using ASP.NETDesktop.Common.Extensions;
 using ASP.NETDesktop.Models;
 using ASP.NETDesktop.Services.Interfaces;
@@ -40,8 +39,7 @@ namespace ASP.NETDesktop.ViewModels {
 
         private async Task<VacationModel> GetAsync(Guid id) {
             var result = await _vacationService.GetByIdAsync(id);
-            VacationApiModel model = result.Data;
-            VacationModel vacation = _mapper.Map<VacationModel>(model);
+            VacationModel vacation = _mapper.Map<VacationModel>(result.Data);
             return vacation;
         }
 
@@ -74,8 +72,7 @@ namespace ASP.NETDesktop.ViewModels {
         }
 
         public void OnNavigatedTo(INavigationParameters parameters) {
-            string id = parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString();
-            Id = Guid.Parse(id);
+            Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
 
             var vacation = Task.Run(() => GetAsync(Id));
             Vacation = vacation.Result;

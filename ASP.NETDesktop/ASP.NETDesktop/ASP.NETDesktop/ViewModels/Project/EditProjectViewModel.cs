@@ -35,8 +35,7 @@ namespace ASP.NETDesktop.ViewModels {
 
         private async Task<ProjectModel> GetAsync(Guid id) {
             var result = await _projectService.GetByIdAsync(id);
-            ProjectApiModel model = result.Data;
-            ProjectModel project = _mapper.Map<ProjectModel>(model);
+            ProjectModel project = _mapper.Map<ProjectModel>(result.Data);
             return project;
         }
 
@@ -60,8 +59,7 @@ namespace ASP.NETDesktop.ViewModels {
         }
 
         public void OnNavigatedTo(INavigationParameters parameters) {
-            string id = parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString();
-            Id = Guid.Parse(id);
+            Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
 
             var project = Task.Run(() => GetAsync(Id));
             Project = project.Result;

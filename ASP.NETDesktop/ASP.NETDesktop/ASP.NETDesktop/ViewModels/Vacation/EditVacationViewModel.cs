@@ -34,6 +34,7 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
 
         public DelegateCommand BackCommand { get; set; }
         public DelegateCommand EditCommand { get; set; }
+        public DelegateCommand ChartCommand { get; set; }
 
 
         private DateTime _minimumDate = new DateTime(DateTime.Now.Year, 1, 1);
@@ -49,13 +50,13 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
             _navigationService = navigationService;
             BackCommand = new DelegateCommand(BackAsync);
             EditCommand = new DelegateCommand(EditAsync);
+            ChartCommand = new DelegateCommand(GetChart);
             StatusDescriptions = EnumExtensions.GetDescriptions<VacationStatus>();
         }
 
         private async Task<VacationModel> GetAsync(Guid id) {
             var result = await _vacationService.GetByIdAsync(id);
-            VacationApiModel model = result.Data;
-            VacationModel vacation = _mapper.Map<VacationModel>(model);
+            VacationModel vacation = _mapper.Map<VacationModel>(result.Data);
             return vacation;
         }
 
@@ -79,6 +80,10 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
             }
         }
 
+        public async void GetChart() {
+            await _navigationService.NavigateAsync("/NavigationPage/VacationChartView", new NavigationParameters { { "Id", Id }, { "IsCreate", false } });
+        }
+
         private async void BackAsync() {
             if (!IsConnected()) {
                 await _pageDialogService.DisplayAlertAsync("", errorConnectionMessage, "Ok");
@@ -88,8 +93,7 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
         }
 
         public void OnNavigatedTo(INavigationParameters parameters) {
-            string id = parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString();
-            Id = Guid.Parse(id);
+            Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
 
             var vacation = Task.Run(() => GetAsync(Id));
             Vacation = vacation.Result;

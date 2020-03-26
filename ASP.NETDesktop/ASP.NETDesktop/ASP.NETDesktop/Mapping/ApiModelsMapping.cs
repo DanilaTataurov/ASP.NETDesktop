@@ -6,13 +6,15 @@ namespace ASP.NETDesktop.Mapping {
     internal class ApiModelsMapping : Profile {
         public ApiModelsMapping() {
             CreateMap<DeveloperModel, DeveloperApiModel>()
-                .ReverseMap();
+                .ReverseMap()
+                .ForMember(dest => dest.FullName, opt => opt.Ignore());
 
             CreateMap<ProjectModel, ProjectApiModel>()
                 .ReverseMap();
 
             CreateMap<VacationModel, VacationApiModel>()
-                .ReverseMap();
+                .ReverseMap()
+                .ForMember(dest => dest.StatusDescription, opt => opt.Ignore());
         }
     }
 }

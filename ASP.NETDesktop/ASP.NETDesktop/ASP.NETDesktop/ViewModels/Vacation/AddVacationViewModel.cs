@@ -31,6 +31,7 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
         public VacationModel Vacation { get => _vacation; set => SetProperty(ref _vacation, value); }
         public DelegateCommand BackCommand { get; set; }
         public DelegateCommand CreateCommand { get; set; }
+        public DelegateCommand ChartCommand { get; set; }
 
 
         private DateTime _minimumDate = new DateTime(DateTime.Now.Year, 1, 1);
@@ -46,6 +47,7 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
             _navigationService = navigationService;
             BackCommand = new DelegateCommand(Back);
             CreateCommand = new DelegateCommand(Create);
+            ChartCommand = new DelegateCommand(GetChart);
             Vacation = new VacationModel();
             StatusDescriptions = EnumExtensions.GetDescriptions<VacationStatus>();
         }
@@ -79,9 +81,12 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
             }
         }
 
+        public async void GetChart() {
+            await _navigationService.NavigateAsync("/NavigationPage/VacationChartView", new NavigationParameters { { "Id", Id }, {"IsCreate", true} });
+        }
+
         public void OnNavigatedTo(INavigationParameters parameters) {
-            string id = parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString();
-            Id = Guid.Parse(id);
+            Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
             Vacation.StartDate = DateTime.UtcNow;
             Vacation.EndDate = DateTime.UtcNow;
             SelectedStatus = EnumExtensions.GetEnumDescription(VacationStatus.CanMove);

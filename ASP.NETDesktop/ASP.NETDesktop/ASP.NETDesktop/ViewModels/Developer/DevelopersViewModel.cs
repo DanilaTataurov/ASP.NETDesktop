@@ -36,15 +36,13 @@ namespace ASP.NETDesktop.ViewModels {
             AddCommand = new DelegateCommand(AddAsync);
 
             var list = Task.Run(() => ListAsync());
-            var result = list.Result.ToList();
-            Developers = new List<DeveloperApiModel>(result);
+            Developers = new List<DeveloperApiModel>(list.Result.ToList());
         }
 
         private async Task<List<DeveloperApiModel>> ListAsync() {
             var result = await _developerService.ListAsync();
             if (result.IsSuccess) {
-                List<DeveloperApiModel> developers = result.Data;
-                return developers;
+                return result.Data;
             } else {
                 await _navigationService.NavigateAsync("/NavigationPage/MainView");
                 return null;

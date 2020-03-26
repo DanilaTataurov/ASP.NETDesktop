@@ -13,6 +13,7 @@ namespace ASP.NETDesktop.Models {
         private string _cellPhone;
         private string _schedule;
 
+        public string FullName { get => _firstName + " " + _lastName; }
         public string FirstName { get => _firstName; set => SetProperty(ref _firstName, value); }
         public string LastName { get => _lastName; set => SetProperty(ref _lastName, value); }
         public string Grade { get => _grade; set => SetProperty(ref _grade, value); }

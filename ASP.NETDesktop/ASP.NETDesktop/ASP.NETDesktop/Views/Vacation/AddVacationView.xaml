@@ -19,6 +19,7 @@
             <Picker Title="Select a status" ItemsSource="{Binding StatusDescriptions}" SelectedItem="{Binding SelectedStatus, Mode=Default}"/>
 
             <Button x:Name="Save" Text="Create" Command="{Binding CreateCommand}"/>
+            <Button x:Name="OpenChart" Text="Open chart" Command="{Binding ChartCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

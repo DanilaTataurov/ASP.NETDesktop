@@ -36,14 +36,12 @@ namespace ASP.NETDesktop.ViewModels {
             AddCommand = new DelegateCommand(AddAsync);
 
             var list = Task.Run(() => ListAsync());
-            var result = list.Result.ToList();
-            Projects = new List<ProjectApiModel>(result);
+            Projects = new List<ProjectApiModel>(list.Result.ToList());
         }
 
         private async Task<List<ProjectApiModel>> ListAsync() {
             var result = await _projectService.ListAsync();
-            List<ProjectApiModel> projects = result.Data;
-            return projects;
+            return result.Data;
         }
 
         private async void GetAsync() {
