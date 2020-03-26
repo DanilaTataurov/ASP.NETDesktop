@@ -14,13 +14,10 @@ namespace ASP.NETDesktop.Services {
 
         public async Task<ServiceResult> LoginAsync(string username, string password) {
             var response = await _apiService.DoLoginAsync(username, password);
-            if (response.IsSuccess) {
-                Application.Current.Properties["token"] = response.Message;
-                await Application.Current.SavePropertiesAsync();
-                return ServiceResult.Ok();
-            } else {
-                return ServiceResult.Fail(response.Error);
-            }
+
+            Application.Current.Properties["token"] = response.Message;
+            await Application.Current.SavePropertiesAsync();
+            return ServiceResult.State(response);
         }
 
         public async Task<ServiceResult> LogoutAsync() {
@@ -28,10 +25,7 @@ namespace ASP.NETDesktop.Services {
             await Application.Current.SavePropertiesAsync();
 
             var response = await _apiService.DoRequestAsync("POST", UrlHelper.Logout, new { });
-            if (response.IsSuccess) {
-                return ServiceResult.Ok();
-            }
-            return ServiceResult.Fail(response.Error);
+            return ServiceResult.State(response);
         }
     }
 }
