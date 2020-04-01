@@ -77,7 +77,6 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
 
         public void OnNavigatedTo(INavigationParameters parameters) {
             Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
-
             var list = Task.Run(() => ListAsync(Id));
             Vacations = new List<VacationModel>(_mapper.Map<List<VacationModel>>(list.Result.ToList()));
         }

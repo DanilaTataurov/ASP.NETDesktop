@@ -12,19 +12,21 @@
                      Command="{Binding BackCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Entry x:Name="Name" Text="{Binding Project.Name}" Placeholder="Name" FontSize="Medium" />
-            <Entry x:Name="Description" Text="{Binding Project.Description}" Placeholder="Description" FontSize="Medium" />
-            <Entry x:Name="Client" Text="{Binding Project.Client}" Placeholder="Client" FontSize="Medium" />
-            <Entry x:Name="Company" Text="{Binding Project.Company}" Placeholder="Company" FontSize="Medium" />
-            <Entry x:Name="Source" Text="{Binding Project.Source}" Placeholder="Source" FontSize="Medium" />
-            <Entry x:Name="Contact" Text="{Binding Project.Contact}" Placeholder="Contact" FontSize="Medium" />
-            <Entry x:Name="Status" Text="{Binding Project.Status}" Placeholder="Status" FontSize="Medium" />
-            <DatePicker FontSize="Small" Date="{Binding Project.StartDate}"/>
-            <DatePicker FontSize="Small" Date="{Binding Project.EndDate}"/>
-            <Entry x:Name="GitUrl" Text="{Binding Project.GitUrl}" Placeholder="Git url" FontSize="Medium" />
+        <ScrollView>
+            <StackLayout>
+                <Entry x:Name="Name" Text="{Binding Project.Name}" Placeholder="Name" FontSize="Medium" />
+                <Entry x:Name="Description" Text="{Binding Project.Description}" Placeholder="Description" FontSize="Medium" />
+                <Entry x:Name="Client" Text="{Binding Project.Client}" Placeholder="Client" FontSize="Medium" />
+                <Entry x:Name="Company" Text="{Binding Project.Company}" Placeholder="Company" FontSize="Medium" />
+                <Entry x:Name="Source" Text="{Binding Project.Source}" Placeholder="Source" FontSize="Medium" />
+                <Entry x:Name="Contact" Text="{Binding Project.Contact}" Placeholder="Contact" FontSize="Medium" />
+                <Entry x:Name="Status" Text="{Binding Project.Status}" Placeholder="Status" FontSize="Medium" />
+                <DatePicker FontSize="Small" Date="{Binding Project.StartDate}"/>
+                <DatePicker FontSize="Small" Date="{Binding Project.EndDate}"/>
+                <Entry x:Name="GitUrl" Text="{Binding Project.GitUrl}" Placeholder="Git url" FontSize="Medium" />
 
-            <Button x:Name="Save" Text="Save" Command="{Binding EditCommand}"/>
-        </StackLayout>
+                <Button x:Name="Save" Text="Save" Command="{Binding EditCommand}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

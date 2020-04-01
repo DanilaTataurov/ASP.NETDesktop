@@ -56,7 +56,7 @@ namespace ASP.NETDesktop.Web.Controllers.Api {
         [HttpPost]
         public async Task<IHttpActionResult> CreateAsync([FromUri]VacationApiModel model) {
             try {
-                string result = _vacationService.Create(_mapper.Map<VacationDto>(model));
+                var result = _vacationService.Create(_mapper.Map<VacationDto>(model));
                 return Ok(result);
             } catch (Exception ex) {
                 return BadRequest(ex.Message);
@@ -67,7 +67,7 @@ namespace ASP.NETDesktop.Web.Controllers.Api {
         [HttpPost]
         public async Task<IHttpActionResult> UpdateAsync([FromUri]VacationApiModel model) {
             try {
-                string result = await _vacationService.UpdateAsync(_mapper.Map<VacationDto>(model));
+                var result = _vacationService.Update(_mapper.Map<VacationDto>(model));
                 return Ok(result);
             } catch (Exception ex) {
                 return BadRequest(ex.Message);

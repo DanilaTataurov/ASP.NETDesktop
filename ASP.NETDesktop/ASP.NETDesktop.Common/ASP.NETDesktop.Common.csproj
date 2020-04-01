@@ -44,8 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiModels\Account\FailResult.cs" />
-    <Compile Include="ApiModels\Account\TokenResult.cs" />
     <Compile Include="ApiModels\Base\BaseApiModel.cs" />
     <Compile Include="ApiModels\DeveloperApiModel.cs" />
     <Compile Include="ApiModels\ProjectApiModel.cs" />

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
-namespace ASP.NETDesktop.Common.ApiModels.Account {
-    public class FailResult {
+namespace ASP.NETDesktop.Models.Responses {
+    public class FailedResult {
         [JsonProperty("error")]
         public string Error { get; set; }
 

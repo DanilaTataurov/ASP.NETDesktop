@@ -68,12 +68,12 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
 
             VacationApiModel model = _mapper.Map<VacationApiModel>(Vacation);
             model.DeveloperId = Id;
-            model.Status = EnumExtensions.ParseDescriptionToEnum<VacationStatus>(SelectedStatus);
+            model.Status = SelectedStatus;
             var result = await _vacationService.CreateAsync(model);
 
             if (result.IsSuccess) {
-                await _pageDialogService.DisplayAlertAsync("", result.Data, "Ok");
-                if (result.Data.Contains("success")) {
+                await _pageDialogService.DisplayAlertAsync("", result.Data.Message, "Ok");
+                if (result.Data.IsSuccess) {
                     await _navigationService.NavigateAsync("/NavigationPage/VacationsView", new NavigationParameters { { "Id", Id } });
                 }
             } else {
@@ -89,7 +89,7 @@ namespace ASP.NETDesktop.ViewModels.Vacation {
             Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
             Vacation.StartDate = DateTime.UtcNow;
             Vacation.EndDate = DateTime.UtcNow;
-            SelectedStatus = EnumExtensions.GetEnumDescription(VacationStatus.CanMove);
+            SelectedStatus = EnumExtensions.GetDescription(VacationStatus.CanMove);
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters) { }

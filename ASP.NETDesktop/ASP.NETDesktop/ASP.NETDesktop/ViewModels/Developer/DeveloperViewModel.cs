@@ -91,7 +91,6 @@ namespace ASP.NETDesktop.ViewModels {
 
         public void OnNavigatedTo(INavigationParameters parameters) {
             Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
-
             var developer = Task.Run(() => GetAsync(Id));
             Developer = developer.Result;
         }

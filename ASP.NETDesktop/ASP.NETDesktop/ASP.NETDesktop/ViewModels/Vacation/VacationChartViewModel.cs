@@ -13,8 +13,6 @@ using Prism.Services;
 
 namespace ASP.NETDesktop.ViewModels.Vacation {
     public class VacationChartViewModel : BaseViewModel, INavigationAware {
-        //TODO: redo the list to a chart
-
         private readonly IMapper _mapper;
         private readonly IVacationService _vacationService;
         private readonly INavigationService _navigationService;

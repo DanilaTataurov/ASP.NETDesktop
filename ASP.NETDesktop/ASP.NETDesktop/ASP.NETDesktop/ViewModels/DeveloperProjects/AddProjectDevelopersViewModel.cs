@@ -60,7 +60,6 @@ namespace ASP.NETDesktop.ViewModels.DeveloperProjects {
 
         public void OnNavigatedTo(INavigationParameters parameters) {
             Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
-
             var list = Task.Run(() => ListAsync(Id));
             Developers = new List<DeveloperApiModel>(list.Result.ToList());
         }

@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Services\Responses\ServiceResult.cs" />
     <Compile Include="Models\Dtos\Base\BaseDto.cs" />
     <Compile Include="Models\Dtos\DeveloperDto.cs" />
     <Compile Include="Models\Dtos\ProjectDto.cs" />

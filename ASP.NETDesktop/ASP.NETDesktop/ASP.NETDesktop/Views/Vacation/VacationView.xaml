@@ -12,26 +12,28 @@
                      Command="{Binding BackCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
-                <Label Grid.Column="0" Text="Start date: " HorizontalTextAlignment="Start"/>
-                <Label Grid.Column="1" Text="{Binding Vacation.StartDate, StringFormat='{0:dd/MM/yyyy, dddd}'}" />
-            </Grid>
-            <Grid>
-                <Label Grid.Column="0" Text="End date: " HorizontalTextAlignment="Start"/>
-                <Label Grid.Column="1" Text="{Binding Vacation.EndDate, StringFormat='{0:dd/MM/yyyy, dddd}'}" />
-            </Grid>
-            <Grid>
-                <Label Grid.Column="0" Text="Comment: " HorizontalTextAlignment="Start"/>
-                <Label Grid.Column="1" Text="{Binding Vacation.Comment}" />
-            </Grid>
-            <Grid>
-                <Label Grid.Column="0" Text="Status: " HorizontalTextAlignment="Start"/>
-                <Label Grid.Column="1" Text="{Binding Status}" />
-            </Grid>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Label Grid.Column="0" Text="Start date: " HorizontalTextAlignment="Start"/>
+                    <Label Grid.Column="1" Text="{Binding Vacation.StartDate, StringFormat='{0:dd/MM/yyyy, dddd}'}" />
+                </Grid>
+                <Grid>
+                    <Label Grid.Column="0" Text="End date: " HorizontalTextAlignment="Start"/>
+                    <Label Grid.Column="1" Text="{Binding Vacation.EndDate, StringFormat='{0:dd/MM/yyyy, dddd}'}" />
+                </Grid>
+                <Grid>
+                    <Label Grid.Column="0" Text="Comment: " HorizontalTextAlignment="Start"/>
+                    <Label Grid.Column="1" Text="{Binding Vacation.Comment}" />
+                </Grid>
+                <Grid>
+                    <Label Grid.Column="0" Text="Status: " HorizontalTextAlignment="Start"/>
+                    <Label Grid.Column="1" Text="{Binding Status}" />
+                </Grid>
 
-            <Button x:Name="Update" Text="Update" Command="{Binding UpdateCommand}"/>
-            <Button x:Name="Delete" Text="Delete" Command="{Binding DeleteCommand}"/>
-        </StackLayout>
+                <Button x:Name="Update" Text="Update" Command="{Binding UpdateCommand}"/>
+                <Button x:Name="Delete" Text="Delete" Command="{Binding DeleteCommand}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

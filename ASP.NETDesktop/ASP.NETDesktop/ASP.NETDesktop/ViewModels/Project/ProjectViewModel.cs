@@ -51,8 +51,7 @@ namespace ASP.NETDesktop.ViewModels {
         }
 
         private async void UpdateAsync() {
-            if (!IsConnected())
-            {
+            if (!IsConnected()) {
                 await _pageDialogService.DisplayAlertAsync("", errorConnectionMessage, "Ok");
             } else {
                 await _navigationService.NavigateAsync("/NavigationPage/EditProjectView", new NavigationParameters { { "Id", Id } });
@@ -81,7 +80,6 @@ namespace ASP.NETDesktop.ViewModels {
 
         public void OnNavigatedTo(INavigationParameters parameters) {
             Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
-
             var project = Task.Run(() => GetAsync(Id));
             Project = project.Result;
         }

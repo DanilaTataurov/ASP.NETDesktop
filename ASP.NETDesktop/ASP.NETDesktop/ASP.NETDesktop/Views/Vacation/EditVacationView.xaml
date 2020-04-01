@@ -12,14 +12,16 @@
                      Command="{Binding BackCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <DatePicker FontSize="Small" Date="{Binding Vacation.StartDate}" MinimumDate="{Binding MinimumDate}" MaximumDate="{Binding MaximumDate}"/>
-            <DatePicker FontSize="Small" Date="{Binding Vacation.EndDate}" MinimumDate="{Binding MinimumDate}" MaximumDate="{Binding MaximumDate}"/>
-            <Entry x:Name="Comment" Text="{Binding Vacation.Comment}" Placeholder="Comment" FontSize="Medium" />
-            <Picker Title="Select a status" ItemsSource="{Binding StatusDescriptions}" SelectedItem="{Binding SelectedStatus}"/>
+        <ScrollView>
+            <StackLayout>
+                <DatePicker FontSize="Small" Date="{Binding Vacation.StartDate}" MinimumDate="{Binding MinimumDate}" MaximumDate="{Binding MaximumDate}"/>
+                <DatePicker FontSize="Small" Date="{Binding Vacation.EndDate}" MinimumDate="{Binding MinimumDate}" MaximumDate="{Binding MaximumDate}"/>
+                <Entry x:Name="Comment" Text="{Binding Vacation.Comment}" Placeholder="Comment" FontSize="Medium" />
+                <Picker Title="Select a status" ItemsSource="{Binding StatusDescriptions}" SelectedItem="{Binding SelectedStatus}"/>
 
-            <Button x:Name="Save" Text="Save" Command="{Binding EditCommand}"/>
-            <Button x:Name="OpenChart" Text="Open chart" Command="{Binding ChartCommand}" />
-        </StackLayout>
+                <Button x:Name="Save" Text="Save" Command="{Binding EditCommand}"/>
+                <Button x:Name="OpenChart" Text="Open chart" Command="{Binding ChartCommand}" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

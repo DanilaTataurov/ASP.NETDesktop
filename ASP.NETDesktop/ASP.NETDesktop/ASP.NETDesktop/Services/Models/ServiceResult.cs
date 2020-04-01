@@ -31,14 +31,5 @@ namespace ASP.NETDesktop.Services.Models {
                 return Fail(response.Error);
             }
         }
-
-        public static ServiceResult<string> StateString(ApiResponse response) {
-            if (response.IsSuccess) {
-                var jsonResult = JsonConvert.DeserializeObject(response.Message).ToString();
-                return ServiceResult<string>.Ok(jsonResult);
-            } else {
-                return ServiceResult<string>.Fail(response.Error);
-            }
-        }
     }
 }

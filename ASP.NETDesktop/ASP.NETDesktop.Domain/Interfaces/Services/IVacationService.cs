@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ASP.NETDesktop.Domain.Entities;
 using ASP.NETDesktop.Domain.Interfaces.Services.Base;
+using ASP.NETDesktop.Domain.Interfaces.Services.Responses;
 using ASP.NETDesktop.Domain.Models.Dtos;
 
 namespace ASP.NETDesktop.Domain.Interfaces.Services {
@@ -10,8 +11,8 @@ namespace ASP.NETDesktop.Domain.Interfaces.Services {
         IEnumerable<VacationDto> List();
         IEnumerable<VacationDto> ListByDeveloperId(Guid id);
         Task<VacationDto> GetByIdAsync(Guid id);
-        string Create(VacationDto dto);
-        Task<string> UpdateAsync(VacationDto dto);
+        ServiceResult Create(VacationDto dto);
+        ServiceResult Update(VacationDto dto);
         Task<bool> DeleteAsync(Guid id);
     }
 }

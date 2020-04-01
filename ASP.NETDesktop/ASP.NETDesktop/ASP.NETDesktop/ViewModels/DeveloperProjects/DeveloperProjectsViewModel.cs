@@ -72,7 +72,6 @@ namespace ASP.NETDesktop.ViewModels.DeveloperProjects {
 
         public void OnNavigatedTo(INavigationParameters parameters) {
             Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
-
             var list = Task.Run(() => ListAsync(Id));
             Projects = new List<ProjectApiModel>(list.Result.ToList());
         }

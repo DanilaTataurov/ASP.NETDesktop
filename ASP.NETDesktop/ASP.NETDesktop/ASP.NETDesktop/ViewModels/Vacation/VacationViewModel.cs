@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using ASP.NETDesktop.Common.Extensions;
 using ASP.NETDesktop.Models;
 using ASP.NETDesktop.Services.Interfaces;
 using ASP.NETDesktop.ViewModels.Base;
@@ -73,10 +72,9 @@ namespace ASP.NETDesktop.ViewModels {
 
         public void OnNavigatedTo(INavigationParameters parameters) {
             Id = Guid.Parse(parameters.FirstOrDefault(x => x.Key == "Id").Value.ToString());
-
             var vacation = Task.Run(() => GetAsync(Id));
             Vacation = vacation.Result;
-            Status = EnumExtensions.GetEnumDescription(Vacation.Status);
+            Status = Vacation.Status;
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters) { }

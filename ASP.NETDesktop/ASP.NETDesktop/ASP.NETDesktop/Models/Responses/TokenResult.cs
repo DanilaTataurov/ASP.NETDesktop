@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace ASP.NETDesktop.Common.ApiModels.Account {
+namespace ASP.NETDesktop.Models.Responses {
     public class TokenResult {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

@@ -13,8 +13,7 @@ namespace ASP.NETDesktop.Mapping {
                 .ReverseMap();
 
             CreateMap<VacationModel, VacationApiModel>()
-                .ReverseMap()
-                .ForMember(dest => dest.StatusDescription, opt => opt.Ignore());
+                .ReverseMap();
         }
     }
 }

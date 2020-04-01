@@ -41,8 +41,7 @@ namespace ASP.NETDesktop.ViewModels {
         }
 
         private bool IsValid() {
-            if (string.IsNullOrEmpty(Username)
-                || string.IsNullOrEmpty(Password)) {
+            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password)) {
                 _pageDialogService.DisplayAlertAsync("Please fill in all the form fields.", "", "OK");
                 return false;
             }

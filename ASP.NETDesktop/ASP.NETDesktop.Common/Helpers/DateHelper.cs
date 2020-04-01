@@ -5,9 +5,9 @@ using System.Linq;
 namespace ASP.NETDesktop.Common.Helpers {
     public static class DateHelper {
         public static int GetWorkingDays(DateTime startDate, DateTime endDate) {
-            var totalDays = 0;
-            var holidays = GetHolidays();
-            for (var date = startDate; date <= endDate; date = date.AddDays(1)) {
+            int totalDays = 0;
+            IEnumerable<DateTime> holidays = GetHolidays();
+            for (DateTime date = startDate; date <= endDate; date = date.AddDays(1)) {
                 if (date.DayOfWeek != DayOfWeek.Saturday
                     && date.DayOfWeek != DayOfWeek.Sunday
                     && !holidays.Contains(date))
@@ -48,7 +48,7 @@ namespace ASP.NETDesktop.Common.Helpers {
         }
 
         public static IEnumerable<DateTime> GetHolidays() {
-            var Holidays = new List<DateTime>();
+            List<DateTime> Holidays = new List<DateTime>();
             Holidays.Add(new DateTime(DateTime.Now.Year, 1, 1));
             Holidays.Add(new DateTime(DateTime.Now.Year, 1, 2));
             Holidays.Add(new DateTime(DateTime.Now.Year, 1, 3));

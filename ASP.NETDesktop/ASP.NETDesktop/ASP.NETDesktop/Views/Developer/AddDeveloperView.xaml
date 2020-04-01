@@ -12,19 +12,21 @@
                      Command="{Binding BackCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Entry x:Name="firstNameEntry" Text="{Binding Developer.FirstName}" Placeholder="First name" FontSize="Medium" />
-            <Entry x:Name="lastNameEntry" Text="{Binding Developer.LastName}" Placeholder="Last name" FontSize="Medium" />
-            <Entry x:Name="gradeEntry" Text="{Binding Developer.Grade}" Placeholder="Grade" FontSize="Medium" />
-            <Entry x:Name="locationEntry" Text="{Binding Developer.Location}" Placeholder="Location" FontSize="Medium" />
-            <Entry x:Name="roomEntry" Text="{Binding Developer.Room}" Placeholder="Room" FontSize="Medium" />
-            <Entry x:Name="skypeEntry" Text="{Binding Developer.Skype}" Placeholder="Skype" FontSize="Medium" />
-            <Entry x:Name="emailEntry" Text="{Binding Developer.Email}" Placeholder="Email" FontSize="Medium" />
-            <Entry x:Name="homePhoneEntry" Text="{Binding Developer.HomePhone}" Placeholder="Home phone" FontSize="Medium" />
-            <Entry x:Name="cellPhoneEntry" Text="{Binding Developer.CellPhone}" Placeholder="Cell phone" FontSize="Medium" />
-            <Entry x:Name="schedulePhoneEntry" Text="{Binding Developer.Schedule}" Placeholder="Schedule" FontSize="Medium" />
+        <ScrollView>
+            <StackLayout>
+                <Entry x:Name="firstNameEntry" Text="{Binding Developer.FirstName}" Placeholder="First name" FontSize="Medium" />
+                <Entry x:Name="lastNameEntry" Text="{Binding Developer.LastName}" Placeholder="Last name" FontSize="Medium" />
+                <Entry x:Name="gradeEntry" Text="{Binding Developer.Grade}" Placeholder="Grade" FontSize="Medium" />
+                <Entry x:Name="locationEntry" Text="{Binding Developer.Location}" Placeholder="Location" FontSize="Medium" />
+                <Entry x:Name="roomEntry" Text="{Binding Developer.Room}" Placeholder="Room" FontSize="Medium" />
+                <Entry x:Name="skypeEntry" Text="{Binding Developer.Skype}" Placeholder="Skype" FontSize="Medium" />
+                <Entry x:Name="emailEntry" Text="{Binding Developer.Email}" Placeholder="Email" FontSize="Medium" />
+                <Entry x:Name="homePhoneEntry" Text="{Binding Developer.HomePhone}" Placeholder="Home phone" FontSize="Medium" />
+                <Entry x:Name="cellPhoneEntry" Text="{Binding Developer.CellPhone}" Placeholder="Cell phone" FontSize="Medium" />
+                <Entry x:Name="schedulePhoneEntry" Text="{Binding Developer.Schedule}" Placeholder="Schedule" FontSize="Medium" />
 
-            <Button x:Name="Save" Text="Create" Command="{Binding CreateCommand}"/>
-        </StackLayout>
+                <Button x:Name="Save" Text="Create" Command="{Binding CreateCommand}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

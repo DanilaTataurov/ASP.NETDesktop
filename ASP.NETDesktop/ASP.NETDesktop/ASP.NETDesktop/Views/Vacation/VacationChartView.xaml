@@ -30,7 +30,7 @@
                                     <Label Text="{Binding Developer.FullName}" TextColor="DodgerBlue"/>
                                     <Label Text="{Binding StartDate, StringFormat='{0:dd/MM/yyyy, dddd}'}"/>
                                     <Label Text="{Binding EndDate, StringFormat='{0:dd/MM/yyyy, dddd}'}"/>
-                                    <Label Text="{Binding StatusDescription}"/>
+                                    <Label Text="{Binding Status}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

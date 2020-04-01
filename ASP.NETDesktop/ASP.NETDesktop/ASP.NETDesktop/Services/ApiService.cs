@@ -5,8 +5,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ASP.NETDesktop.Common.ApiModels.Account;
 using ASP.NETDesktop.Helpers;
+using ASP.NETDesktop.Models.Responses;
 using ASP.NETDesktop.Services.Interfaces;
 using ASP.NETDesktop.Services.Models;
 using Newtonsoft.Json;
@@ -55,13 +55,13 @@ namespace ASP.NETDesktop.Services {
                 HttpResponseMessage response = await client.PostAsync(UrlHelper.Token, content);
                 var responseString = await response.Content.ReadAsStringAsync();
 
-                var failResult = JsonConvert.DeserializeObject<FailResult>(responseString);
+                var failedResult = JsonConvert.DeserializeObject<FailedResult>(responseString);
                 var tokenResult = JsonConvert.DeserializeObject<TokenResult>(responseString);
 
                 if (tokenResult.AccessToken != null) {
                     return ApiResponse.Ok(tokenResult.AccessToken);
                 } else {
-                    return ApiResponse.Fail(failResult.ErrorDescription);
+                    return ApiResponse.Fail(failedResult.ErrorDescription);
                 }
             } catch (Exception ex) {
                 return ApiResponse.Fail(ex.Message);

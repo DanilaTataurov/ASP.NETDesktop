@@ -14,7 +14,7 @@ namespace ASP.NETDesktop.Common.Extensions {
             return attributes.Select(x => x.Description).ToList();
         }
 
-        public static string GetEnumDescription<T>(T value) {
+        public static string GetDescription<T>(T value) {
             FieldInfo fi = value.GetType().GetField(value.ToString());
             DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
 
@@ -33,7 +33,7 @@ namespace ASP.NETDesktop.Common.Extensions {
                 list.Add((T)array.GetValue(i));
             }
             
-            var dict = list.Select(v => new { Value = v, Description = GetEnumDescription(v) })
+            var dict = list.Select(v => new { Value = v, Description = GetDescription(v) })
                 .ToDictionary(x => x.Description, x => x.Value);
             return dict[description];
         }
