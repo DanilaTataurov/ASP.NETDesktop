@@ -13,30 +13,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Button x:Name="AddProject" Text="Add new" Grid.Row="1" Command="{Binding AddCommand}" />
-                <ListView x:Name="VacationListView"
-                          ItemsSource="{Binding Vacations}"
-                          HasUnevenRows="True"
-                          CachingStrategy="RecycleElement">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout>
-                                    <Label Text="{Binding Developer.FullName}" TextColor="DodgerBlue"/>
-                                    <Label Text="{Binding StartDate, StringFormat='{0:dd/MM/yyyy, dddd}'}"/>
-                                    <Label Text="{Binding EndDate, StringFormat='{0:dd/MM/yyyy, dddd}'}"/>
-                                    <Label Text="{Binding Status}"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+            <WebView x:Name="webView" Source="http://192.168.0.109/Vacation/Chart/" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

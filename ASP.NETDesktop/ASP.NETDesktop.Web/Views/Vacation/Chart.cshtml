@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        var chartData;
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Vacation/List/",
+                dataType: "json",
+                contentType: "application/json; chartset=utf-8",
+                success: function (data) {
+                    chartData = data;
+                    for (let index = 0; index < chartData.length; ++index) {
+                        var value = chartData[index];
+                        value[3] = new Date(value[3]);
+                        value[4] = new Date(value[4]);
+                    }
+                },
+                error: function () {
+                    alert("Error loading data");
+                }
+            }).done(function () {
+                google.setOnLoadCallback(drawChart);
+            });
+        });
+
+        google.charts.load('current', { 'packages': ['timeline'] });
+
+        function drawChart() {
+            var chart = new google.visualization.Timeline(document.getElementById('chart'));
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({ type: 'string', id: 'FullName' });
+            dataTable.addColumn({ type: 'string', id: 'Label' });
+            dataTable.addColumn({ type: 'string', role: 'tooltip', id: "Description" });
+            dataTable.addColumn({ type: 'date', id: 'StartDate' });
+            dataTable.addColumn({ type: 'date', id: 'EndDate' });
+            dataTable.addRows((chartData));
+            var options = {
+                timeline: { singleColor: '#2196F3' },
+                width: 750,
+                height: 280
+            };
+            chart.draw(dataTable, options);
+        }
+    </script>
+</head>
+<body>
+    <div id="chart"/>
+</body>
+</html>
